@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artikel Setara Skripsi — PGSD Kampus UPI di Serang</title>
+<meta name="description" content="Daftar artikel ilmiah mahasiswa yang kedudukannya disetarakan dengan skripsi, Kampus UPI di Serang.">
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --fg:#14181f; --muted:#5b6675;
+    --line:#e3e7ec; --accent:#a01c2b; --accent-soft:#fdeef0;
+    --chip:#eef1f5; --shadow:0 1px 2px rgba(16,24,40,.05),0 8px 24px rgba(16,24,40,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --card:#171b21; --fg:#e8ecf1; --muted:#98a3b3;
+      --line:#252b34; --accent:#ff8a95; --accent-soft:#2a1a1e;
+      --chip:#212731; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px}
+
+  header.top{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:28px 28px 24px;box-shadow:var(--shadow);margin-bottom:22px;
+  }
+  .kicker{
+    display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);border-radius:999px;
+    padding:5px 12px;font-weight:700;margin-bottom:14px;
+  }
+  h1{margin:0 0 8px;font-size:clamp(22px,3.6vw,32px);line-height:1.25;letter-spacing:-.02em}
+  .sub{margin:0;color:var(--muted);max-width:64ch}
+  .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+  .stat{background:var(--chip);border-radius:10px;padding:8px 14px;font-size:14px}
+  .stat b{font-variant-numeric:tabular-nums}
+
+  .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:0 0 16px}
+  .search{position:relative;flex:1 1 320px;min-width:0}
+  .search input{
+    width:100%;padding:12px 14px 12px 40px;border-radius:11px;border:1px solid var(--line);
+    background:var(--card);color:var(--fg);font-size:15px;outline:none;
+  }
+  .search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);opacity:.5}
+  .count{color:var(--muted);font-size:14px;white-space:nowrap}
+
+  .tablecard{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+  .scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:880px}
+  thead th{
+    text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);font-weight:700;padding:14px 18px;border-bottom:1px solid var(--line);
+    background:var(--chip);white-space:nowrap;
+  }
+  tbody td{padding:16px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--accent-soft)}
+  .no{color:var(--muted);font-variant-numeric:tabular-nums;width:48px}
+  .nama{font-weight:650;white-space:nowrap}
+  .judul{max-width:44ch}
+  .pub{color:var(--muted);font-size:14.5px;max-width:32ch}
+  .badge{
+    display:inline-block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.04em;
+    color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:2px 7px;
+  }
+  a.link{
+    color:var(--accent);text-decoration:none;font-size:14px;word-break:break-all;
+    border-bottom:1px solid transparent;
+  }
+  a.link:hover{border-bottom-color:currentColor}
+
+  /* Kartu untuk layar kecil */
+  .cards{display:none}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:18px;margin-bottom:12px;box-shadow:var(--shadow);
+  }
+  .card .nama{white-space:normal;font-size:15px;color:var(--accent);margin-bottom:6px}
+  .card h3{margin:0 0 10px;font-size:16px;line-height:1.4;font-weight:650}
+  .card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+  .card dt{color:var(--muted);white-space:nowrap}
+  .card dd{margin:0}
+
+  .empty{padding:48px 20px;text-align:center;color:var(--muted)}
+  footer{margin-top:26px;color:var(--muted);font-size:13.5px;line-height:1.7}
+  footer p{margin:0 0 6px}
+
+  @media (max-width:760px){
+    .wrap{padding:20px 14px 48px}
+    header.top{padding:22px 18px}
+    .tablecard{display:none}
+    .cards{display:block}
+  }
+  @media print{
+    body{background:#fff}
+    .toolbar,footer{display:none}
+    .tablecard{box-shadow:none;border:0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <span class="kicker">Kampus UPI di Serang</span>
+    <h1>Artikel Ilmiah Mahasiswa yang Disetarakan dengan Skripsi</h1>
+    <p class="sub">
+      Rekapitulasi karya artikel ilmiah mahasiswa yang telah dinyatakan layak dipresentasikan pada
+      ujian sidang skripsi S-1 dan kedudukannya disetarakan dengan skripsi, berdasarkan Surat
+      Keterangan Direktur Kampus UPI di Serang.
+    </p>
+    <div class="meta">
+      <span class="stat"><b id="total">0</b> artikel</span>
+      <span class="stat"><b id="totalJurnal">0</b> jurnal</span>
+      <span class="stat">Peraturan Rektor UPI No. 40 Tahun 2024</span>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <label class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Cari nama mahasiswa, judul, atau nama jurnal…" autocomplete="off">
+    </label>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="tablecard">
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="no">No</th>
+            <th>Nama Mahasiswa</th>
+            <th>Judul</th>
+            <th>Publikasi</th>
+            <th>Tautan</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="emptyTable" hidden>Tidak ada data yang cocok dengan pencarian.</div>
+  </div>
+
+  <div class="cards" id="cards"></div>
+  <div class="empty" id="emptyCards" hidden>Tidak ada data yang cocok dengan pencarian.</div>
+
+  <footer>
+    <p>Sumber data: Surat Keterangan Direktur Kampus UPI di Serang (dokumen ditandatangani secara elektronik).</p>
+    <p>Judul, nama jurnal, dan tautan ditulis sesuai yang tercantum pada surat keterangan masing-masing.</p>
+  </footer>
+
+</div>
+
+<script>
+const DATA = [
+  {
+    nama: "Amelia Putri",
+    judul: "Penerapan Model Cooperative Learning sebagai Upaya Pembiasaan Sikap Gotong Royong Peserta Didik Kelas V SDN Sukabela dalam Pembelajaran Pendidikan Pancasila",
+    publikasi: "Publikasi Pendidikan: Jurnal Pemikiran, Penelitian dan Pengabdian Masyarakat Bidang Pendidikan, Volume 16 Nomor 1 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "http://ojs.unm.ac.id/pubpend/index"
+  },
+  {
+    nama: "Anisa Fitri",
+    judul: "Enhancing Indonesian Vocabulary Learning Through Index Card Match Media: Insights from a Lower Elementary Classroom Case Study",
+    publikasi: "Journal of Education and Teaching (JET), Volume 7, Issue 2, 2026",
+    sinta: "",
+    tautan: "https://jet.or.id/index.php/jet/article/view/881"
+  },
+  {
+    nama: "Aulia Fitri Assyifa",
+    judul: "Pengalaman Guru Sekolah Dasar melalui Program Tokkatsu dalam Pengembangan Keterampilan Sosial secara Holistik",
+    publikasi: "Jurnal Obsesi: Jurnal Pendidikan Anak Usia Dini, Volume 10 Nomor 1 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "https://obsesi.or.id/index.php/obsesi"
+  },
+  {
+    nama: "Fatma Fayza Ummi",
+    judul: "Implementasi Kurikulum Berbasis Cinta dalam Membina Karakter Religius pada Peserta Didik di MIN 2 Tangerang Selatan",
+    publikasi: "Jurnal LOCUS: Penelitian & Pengabdian, Volume 5 Number 4 Tahun 2026",
+    sinta: "",
+    tautan: "https://locus.rivierapublishing.id/"
+  },
+  {
+    nama: "Hilma Nadiya",
+    judul: "Hubungan Partisipasi Ekstrakurikuler Cricket dengan Tingkat Kebugaran Jasmani Siswa SDN Petukangan Utara 07 Pagi, Jakarta Selatan",
+    publikasi: "Gelanggang Olahraga: Jurnal Pendidikan Jasmani dan Olahraga, Volume 9 Nomor 3 Tahun 2026",
+    sinta: "",
+    tautan: "https://journal.ipm2kpe.or.id/index.php/JPJO/article/view/19318"
+  },
+  {
+    nama: "Jingga Nur Andalusia",
+    judul: "Pengaruh Model Problem-Based Learning Berbantuan Media Diorama Interaktif Berbasis Augmented Reality terhadap Pemahaman Keragaman Sosial Budaya Siswa Kelas IV Sekolah Dasar",
+    publikasi: "Jurnal JPIPSI (Jurnal Pendidikan Ilmu Pendidikan Sosial Indonesia), Volume 11 Nomor 2 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "https://journal.stkipsingkawang.ac.id/index.php/JurnalPIPSI/index"
+  },
+  {
+    nama: "Kayla Syahwaliana",
+    judul: "Fenomena Perubahan Fonologi pada Tuturan Pidato Resmi Siswa Kelas VI",
+    publikasi: "Fon: Jurnal Pendidikan Bahasa dan Sastra Indonesia, Volume 22 Nomor 1 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "https://fon.uniku.ac.id/pub"
+  },
+  {
+    nama: "Maisyaroh Salsa Maharani",
+    judul: "Konstruksi Kemampuan Problem-Solving Siswa melalui Ekstrakurikuler Coding: Studi Kasus di SD Islam Al-Azhar 10 Serang",
+    publikasi: "Jurnal JP2SD, Volume 14 Nomor 1 Tahun 2026",
+    sinta: "",
+    tautan: "http://ejournal.umm.ac.id/index.php/jp2sd"
+  },
+  {
+    nama: "Muhammad Ari Pamungkas",
+    judul: "Integrasi Etnomatematika dalam Cooperative Learning Berbantuan Game-Based Learning: Upaya Stimulasi Minat Belajar Siswa Sekolah Dasar",
+    publikasi: "Jurnal Riset Pembelajaran Matematika, Volume 8 Nomor 1 Tahun 2026",
+    sinta: "",
+    tautan: "https://journal.unirow.ac.id/index.php/jrpm/article/view/v8n1.2224"
+  },
+  {
+    nama: "Muhammad Sulthon Fadil",
+    judul: "Implementing Differentiated Learning in the Merdeka Curriculum at Upper Elementary Level: Teachers' Constraints and Adaptive Strategies",
+    publikasi: "Edunesia: Jurnal Ilmiah Pendidikan, Volume 7 Nomor 1 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "https://www.edunesia.org/edu/search"
+  },
+  {
+    nama: "Mutia Rahmi",
+    judul: "Penerapan Model Pembelajaran Kooperatif Tipe TGT untuk Meningkatkan Hasil Belajar Siswa Sekolah Dasar pada Mata Pelajaran IPAS",
+    publikasi: "Jurnal Sekolah, Volume 10 Nomor 2 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "https://jurnal.unimed.ac.id/2012/index.php/js"
+  },
+  {
+    nama: "Nadhifa Zahra Khoirunnisa",
+    judul: "Layanan Bimbingan Belajar Membaca dan Menulis Siswa Kelas 1 SDN 13 Klender Jakarta Timur",
+    publikasi: "Didaktika: Jurnal Kependidikan, Volume 15 Nomor 1 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "https://jurnaldidaktika.org"
+  },
+  {
+    nama: "Najwa Azzahra Yasmin",
+    judul: "Eksplorasi Etnomatematika melalui Permainan Tepuk Bergambar terhadap Kemampuan Penalaran Matematika Siswa",
+    publikasi: "Jurnal Pendidikan Matematika dan Sains (JPMS), Volume 14, Issue 2, 2026",
+    sinta: "",
+    tautan: "https://journal.uny.ac.id/index.php/jpms/about"
+  },
+  {
+    nama: "Nanda Amalia",
+    judul: "Eksplorasi Potensi Media Alam dalam Pembelajaran Pendidikan Pancasila untuk Menumbuhkan Sikap Peduli Lingkungan di Sekolah Dasar",
+    publikasi: "Paedagoria: Jurnal Kajian, Penelitian dan Pengembangan Kependidikan, Volume 17 Nomor 3, Juli 2026",
+    sinta: "",
+    tautan: "http://journal.ummat.ac.id/index.php/paedagoria"
+  },
+  {
+    nama: "Nayla Maharani",
+    judul: "Rekontekstualisasi Nilai-Nilai Pancasila dalam Pembinaan Karakter Siswa melalui Morning Activity di SDN Cigabus",
+    publikasi: "Publikasi Pendidikan: Jurnal Pemikiran, Penelitian dan Pengabdian Masyarakat Bidang Pendidikan, Volume 16 Nomor 1 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "http://ojs.unm.ac.id/pubpend/index"
+  },
+  {
+    nama: "Putri Lismawati",
+    judul: "Integrasi Kearifan Lokal Ekologis Masyarakat Baduy pada Pembelajaran IPS Sekolah Dasar",
+    publikasi: "Jurnal JPIPSI (Jurnal Pendidikan Ilmu Pendidikan Sosial Indonesia), Volume 11 Nomor 2 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "https://journal.stkipsingkawang.ac.id/index.php/JurnalPIPSI/index"
+  },
+  {
+    nama: "Ratu Tria Az Zahra",
+    judul: "Strategi Implementasi Kepala Sekolah dan Guru dalam Mewujudkan Lingkungan Inklusif di SDN Batok Bali",
+    publikasi: "Jurnal Publikasi Pendidikan, Volume 16 Nomor 1 Tahun 2026",
+    sinta: "",
+    tautan: "https://ojs.unm.ac.id/pubpend"
+  },
+  {
+    nama: "Siti Nur Aina Shofiyah",
+    judul: "Didactical Design Research sebagai Pendekatan Pengembangan Media Ajar Digital Berbasis Menu MBG pada Pembelajaran Rantai Makanan",
+    publikasi: "Jurnal Sekolah, Volume 10 Nomor 2, Maret 2026",
+    sinta: "",
+    tautan: "https://jurnal.unimed.ac.id/2012/index.php/js"
+  },
+  {
+    nama: "Sri Waty Rejeki Sitinjak",
+    judul: "Pengaruh Pembelajaran Etnomatematika melalui Permainan Galah Asin terhadap Kemampuan Pemecahan Masalah Matematik pada Siswa Kelas IV SD",
+    publikasi: "Jurnal JP2SD, Volume 14 Nomor 2 Tahun 2026",
+    sinta: "",
+    tautan: "http://ejournal.umm.ac.id/index.php/jp2sd"
+  },
+  {
+    nama: "Syalaysa Fhenia Al Najwa",
+    judul: "Reflective Spiritual Literacy Model Through Prayer and Asmaul Husna Habituation for Strengthening Religious Character in Elementary Students",
+    publikasi: "PIONIR: Jurnal Pendidikan, Volume 15 Nomor 2 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "https://jurnal.ar-raniry.ac.id/index.php/Pionir/index"
+  },
+  {
+    nama: "Syifa Nur Sakinah",
+    judul: "Pemetaan Kesulitan Guru dalam Mengembangkan Keterampilan Membaca pada Lintas Fase Kurikulum Merdeka di SDS Islam Darus Syifa",
+    publikasi: "Jurnal Onoma: Pendidikan, Bahasa dan Sastra, Volume 12 Nomor 1 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "https://e-journal.my.id/onoma"
+  },
+  {
+    nama: "Thifail Arrahmani Habib",
+    judul: "Digital Citizenship dalam Pembelajaran Pendidikan Pancasila: Pengembangan E-LKPD Berbasis Liveworksheet di Sekolah Dasar",
+    publikasi: "Jurnal Sekolah, Volume 10 Nomor 2, Maret 2026",
+    sinta: "",
+    tautan: "https://jurnal.unimed.ac.id/2012/index.php/js"
+  },
+  {
+    nama: "Viona Savira Bahar",
+    judul: "Digital Animation in Pancasila Education Learning: Powtoon Media Innovation to Enhance Civic Knowledge and Unity Values in Elementary School Students",
+    publikasi: "PIONIR: Jurnal Pendidikan, Volume 15 Nomor 2 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "https://jurnal.ar-raniry.ac.id/index.php/Pionir/index"
+  },
+  {
+    nama: "Zahra Dwi Septiani",
+    judul: "Penerapan Metode Mind Mapping pada Materi Gaya di Sekitarku dalam Pembelajaran IPAS untuk Meningkatkan Kreativitas Siswa Kelas IV SD Negeri Cigabus",
+    publikasi: "Publikasi Pendidikan: Jurnal Pemikiran, Penelitian dan Pengabdian Masyarakat Bidang Pendidikan, Volume 16 Nomor 1 Tahun 2026",
+    sinta: "SINTA 3",
+    tautan: "http://ojs.unm.ac.id/pubpend/index"
+  }
+];
+
+DATA.sort((a, b) => a.nama.localeCompare(b.nama, "id"));
+
+const tbody = document.getElementById("tbody");
+const cards = document.getElementById("cards");
+const emptyTable = document.getElementById("emptyTable");
+const emptyCards = document.getElementById("emptyCards");
+const countEl = document.getElementById("count");
+
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const host = url => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return url; } };
+
+function render(list) {
+  tbody.innerHTML = list.map((d, i) => `
+    <tr>
+      <td class="no">${i + 1}</td>
+      <td class="nama">${esc(d.nama)}</td>
+      <td class="judul">${esc(d.judul)}</td>
+      <td class="pub">${esc(d.publikasi)}${d.sinta ? `<br><span class="badge">${esc(d.sinta)}</span>` : ""}</td>
+      <td><a class="link" href="${esc(d.tautan)}" target="_blank" rel="noopener noreferrer">${esc(host(d.tautan))}</a></td>
+    </tr>`).join("");
+
+  cards.innerHTML = list.map((d, i) => `
+    <article class="card">
+      <div class="nama">${i + 1}. ${esc(d.nama)}</div>
+      <h3>${esc(d.judul)}</h3>
+      <dl>
+        <dt>Publikasi</dt><dd>${esc(d.publikasi)}${d.sinta ? ` <span class="badge">${esc(d.sinta)}</span>` : ""}</dd>
+        <dt>Tautan</dt><dd><a class="link" href="${esc(d.tautan)}" target="_blank" rel="noopener noreferrer">${esc(d.tautan)}</a></dd>
+      </dl>
+    </article>`).join("");
+
+  const kosong = list.length === 0;
+  emptyTable.hidden = !kosong;
+  emptyCards.hidden = !kosong;
+  countEl.textContent = `Menampilkan ${list.length} dari ${DATA.length} artikel`;
+}
+
+document.getElementById("q").addEventListener("input", e => {
+  const q = e.target.value.trim().toLowerCase();
+  render(!q ? DATA : DATA.filter(d =>
+    (d.nama + " " + d.judul + " " + d.publikasi + " " + d.tautan).toLowerCase().includes(q)
+  ));
+});
+
+document.getElementById("total").textContent = DATA.length;
+document.getElementById("totalJurnal").textContent =
+  new Set(DATA.map(d => d.publikasi.split(",")[0].trim().toLowerCase())).size;
+
+render(DATA);
+</script>
+</body>
+</html>
